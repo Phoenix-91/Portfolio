@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Image Placeholders</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .image-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    
+    .placeholder {
+      width: 360px;
+      height: 200px;
+      background: linear-gradient(45deg, #1a0b2e, #30145e);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    h2 {
+      margin: 0 0 10px 0;
+      font-size: 24px;
+    }
+    
+    p {
+      margin: 0;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+    
+    .icon {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Project Image Placeholders</h1>
+  <p>Right-click on any of these placeholders and save them as images for your projects</p>
+  
+  <div class="image-container">
+    <div class="placeholder" id="ecommerce">
+      <div class="icon">🛒</div>
+      <h2>E-commerce Store</h2>
+      <p>React | Vite | Tailwind</p>
+    </div>
+    
+    <div class="placeholder" id="chatbot">
+      <div class="icon">💬</div>
+      <h2>AI Chat Bot</h2>
+      <p>HTML | Tailwind | JavaScript</p>
+    </div>
+    
+    <div class="placeholder" id="rental">
+      <div class="icon">🚗</div>
+      <h2>Vehicle Rental System</h2>
+      <p>PHP | JavaScript | MySQL</p>
+    </div>
+    
+    <div class="placeholder" id="portfolio">
+      <div class="icon">💼</div>
+      <h2>Portfolio Website</h2>
+      <p>React | Vite | Tailwind</p>
+    </div>
+    
+    <div class="placeholder" id="learning">
+      <div class="icon">🎓</div>
+      <h2>Learning Platform UI</h2>
+      <p>React | UI/UX | Tailwind</p>
+    </div>
+  </div>
+  
+  <script>
+    // This script can be used to download the placeholders as images
+    // For now, users can manually right-click and save
+  </script>
+</body>
+</html> 
