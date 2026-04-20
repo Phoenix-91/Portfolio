@@ -8,7 +8,7 @@ import { motion } from 'framer-motion'
 import { EDUCATION } from '@/lib/constants'
 
 function DynIcon({ name, size = 28 }: { name: string; size?: number }) {
-  const Icon = (LucideIcons as Record<string, React.ComponentType<{ size?: number }>>)[name]
+  const Icon = (LucideIcons as unknown as Record<string, React.ComponentType<{ size?: number }>>)[name]
   if (!Icon) return null
   return <Icon size={size} />
 }

@@ -12,7 +12,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger)
 
 // Resolve icon name string → Lucide component
 function DynIcon({ name, size = 22, className = '' }: { name: string; size?: number; className?: string }) {
-  const Icon = (LucideIcons as Record<string, React.ComponentType<{ size?: number; className?: string }>>)[name]
+  const Icon = (LucideIcons as unknown as Record<string, React.ComponentType<{ size?: number; className?: string }>>)[name]
   if (!Icon) return null
   return <Icon size={size} className={className} />
 }
