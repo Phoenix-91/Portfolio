@@ -88,8 +88,8 @@ export default function Projects() {
           ref={trackRef}
           className={`projects-track ${isMobile ? 'flex-col' : ''}`}
         >
-          {PROJECTS.map((project, i) => (
-            <ProjectCard key={project.id} project={project} index={i} />
+          {PROJECTS.map((project) => (
+            <ProjectCard key={project.id} project={project} />
           ))}
         </div>
       </div>
@@ -97,7 +97,7 @@ export default function Projects() {
   )
 }
 
-function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: number }) {
+function ProjectCard({ project }: { project: typeof PROJECTS[0] }) {
   return (
     <motion.div
       whileHover={{
