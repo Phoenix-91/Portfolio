@@ -1,12 +1,12 @@
 'use client'
 import { useRef } from 'react'
 import * as LucideIcons from 'lucide-react'
-import { MapPin } from 'lucide-react'
+import { MapPin, GraduationCap, BookOpen } from 'lucide-react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { motion } from 'framer-motion'
-import { ABOUT_CARDS, STATS } from '@/lib/constants'
+import { STATS, EDUCATION } from '@/lib/constants'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
@@ -15,6 +15,11 @@ function DynIcon({ name, size = 22, className = '' }: { name: string; size?: num
   const Icon = (LucideIcons as unknown as Record<string, React.ComponentType<{ size?: number; className?: string }>>)[name]
   if (!Icon) return null
   return <Icon size={size} className={className} />
+}
+
+const EDU_ICONS: Record<string, React.ReactNode> = {
+  GraduationCap: <GraduationCap size={24} />,
+  BookOpen:      <BookOpen size={24} />,
 }
 
 export default function About() {
@@ -29,9 +34,9 @@ export default function About() {
       y: 40, opacity: 0, duration: 0.7, stagger: 0.15, ease: 'power2.out',
       scrollTrigger: { trigger: '.about-bio', start: 'top 82%', toggleActions: 'play none none reverse' },
     })
-    gsap.from('.about-card', {
-      y: 40, opacity: 0, duration: 0.6, stagger: 0.12, ease: 'power2.out',
-      scrollTrigger: { trigger: '.about-cards', start: 'top 78%', toggleActions: 'play none none reverse' },
+    gsap.from('.edu-card', {
+      y: 40, opacity: 0, duration: 0.6, stagger: 0.14, ease: 'power2.out',
+      scrollTrigger: { trigger: '.edu-cards', start: 'top 78%', toggleActions: 'play none none reverse' },
     })
     gsap.from('.stat-card', {
       scale: 0.85, opacity: 0, duration: 0.5, stagger: 0.1, ease: 'back.out(1.7)',
@@ -84,22 +89,44 @@ export default function About() {
           </div>
         </div>
 
-        {/* Right: feature cards */}
-        <div className="about-cards space-y-4">
-          {ABOUT_CARDS.map(card => (
+        {/* Right: Education cards */}
+        <div className="edu-cards space-y-5">
+          <p className="font-mono text-[#4f8ef7] text-sm tracking-widest uppercase mb-6">
+            Academic Background
+          </p>
+
+          {EDUCATION.map((edu) => (
             <motion.div
-              key={card.title}
-              whileHover={{ x: 6, boxShadow: '0 0 30px rgba(79,142,247,0.15)' }}
+              key={edu.degree}
+              whileHover={{ y: -5, boxShadow: '0 20px 40px rgba(79,142,247,0.15)' }}
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-              className="about-card glass-card rounded-2xl p-6 flex items-start gap-5 border border-white/5"
+              className="edu-card glass-card rounded-2xl p-7 relative overflow-hidden group"
             >
-              <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-[#4f8ef7]/15 to-[#7c3aed]/15 flex items-center justify-center text-[#4f8ef7]">
-                <DynIcon name={card.icon} size={22} />
+              {/* Animated bottom border on hover */}
+              <div
+                className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#4f8ef7] to-[#7c3aed]
+                  scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
+              />
+
+              <div className="flex items-start justify-between mb-5">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#4f8ef7]/15 to-[#7c3aed]/15 flex items-center justify-center text-[#4f8ef7]">
+                  {EDU_ICONS[edu.icon] ?? <GraduationCap size={24} />}
+                </div>
+                <span
+                  className="font-mono text-xs px-3 py-1.5 rounded-full"
+                  style={{
+                    background: edu.status === 'Pursuing' ? 'rgba(34,197,94,0.1)' : 'rgba(79,142,247,0.1)',
+                    border:     edu.status === 'Pursuing' ? '1px solid rgba(34,197,94,0.3)' : '1px solid rgba(79,142,247,0.2)',
+                    color:      edu.status === 'Pursuing' ? '#4ade80' : '#4f8ef7',
+                  }}
+                >
+                  {edu.status}
+                </span>
               </div>
-              <div>
-                <h3 className="font-syne font-bold text-white mb-1.5 text-lg">{card.title}</h3>
-                <p className="font-grotesk text-gray-400 text-sm leading-relaxed">{card.desc}</p>
-              </div>
+
+              <h3 className="font-syne font-bold text-white text-lg mb-2 leading-snug">{edu.degree}</h3>
+              <p className="font-grotesk text-[#4f8ef7] font-medium mb-2">{edu.school}</p>
+              <p className="font-mono text-gray-500 text-sm">{edu.year}</p>
             </motion.div>
           ))}
 

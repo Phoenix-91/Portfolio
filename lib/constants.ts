@@ -79,7 +79,6 @@ export const SKILLS = [
       { name: "Docker", slug: "docker" },
       { name: "Git", slug: "git" },
       { name: "GitHub", slug: "github" },
-      { name: "Vercel", slug: "vercel" },
       { name: "DigitalOcean", slug: "digitalocean" },
     ],
   },
@@ -110,11 +109,9 @@ export const SKILLS_FLAT = [
   { name: "Docker",         slug: "docker",          label: "DevOps",             color: "#2496ed" },
   { name: "Git",            slug: "git",             label: "Version Control",    color: "#f05032" },
   { name: "GitHub",         slug: "github",          label: "Repository",         color: "#181717" },
-  { name: "Vercel",         slug: "vercel",          label: "Deployment",         color: "#000000" },
   { name: "DigitalOcean",   slug: "digitalocean",    label: "Cloud",              color: "#0080ff" },
   { name: "Firebase",       slug: "firebase",        label: "Backend Platform",   color: "#dd2c00" },
   { name: "Figma",          slug: "figma",           label: "Design Tool",        color: "#f24e1e" },
-  { name: "Canva",          slug: "canva",           label: "Design App",         color: "#00c4cc" },
   { name: "Prisma",         slug: "prisma",          label: "ORM",                color: "#2d3748" },
 ];
 
@@ -206,6 +203,5 @@ export const NAV_LINKS = [
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
-  { label: "Education", href: "#education" },
   { label: "Contact", href: "#contact" },
 ];
